@@ -25,7 +25,8 @@ import System.Environment (getEnvironment)
 import System.Exit
 import System.IO (Handle, hFlush, hClose, hGetContents, hPutStr)
 import Control.Concurrent
-import Control.Monad.Reader (ask, liftIO, when)
+import Control.Monad.IO.Class (liftIO)
+import Control.Monad.Reader (ask)
 import qualified Control.Exception as Exc
 import VCSWrapper.Common.Types
 import Data.Maybe
@@ -33,7 +34,7 @@ import Data.Monoid (mconcat)
 import Data.Text (Text)
 import qualified Data.Text as T (null, unpack, pack)
 import qualified Data.Map.Strict as Map
-import Control.Monad (unless)
+import Control.Monad (unless, when)
 import Control.Exception (IOException, try)
 
 -- | Internal function to execute a VCS command. Throws an exception if the command fails.
